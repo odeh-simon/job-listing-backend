@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
-  "start": "node dist/server.js",
+  "start": "node src/server.js",
   "build": "tsc",
   "migrate": "prisma migrate deploy",
   "dev": "ts-node-dev src/server.ts"
