@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
-  "start": "node src/server.js",
-  "build": "tsc",
-  "migrate": "prisma migrate deploy",
-  "generate": "prisma generate",
-  "dev": "ts-node-dev src/server.ts"
-},
+    "start": "node src/server.js",
+    "build": "tsc",
+    "migrate": "prisma migrate deploy",
+    "generate": "prisma generate",
+    "dev": "ts-node-dev src/server.ts"
+  },
   "keywords": [],
   "author": "koovly",
   "license": "ISC",
