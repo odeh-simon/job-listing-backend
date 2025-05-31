@@ -1,16 +1,28 @@
-import express from 'express';
+import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
-import { PrismaClient } from '@prisma/client';
-import dotenv from 'dotenv';
+import env from './utils/env.utils';
+import routes from './routes';
+import { errorHandler } from './middlewares/error.middleware';
 
-dotenv.config();
-const PORT = process.env.PORT || 5000;
-const prisma = new PrismaClient();
-const app = express();
+const app: Express = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));
+// Middleware
+app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Routes
+app.use('/api', routes);
+
+// Health check
+app.get('/', (req: Request, res: Response) => {
+  res.json({ message: 'Koovly Backend API' });
+});
+
+// Error handling (must be after all other app.use/app.get/app.post)
+app.use(errorHandler);
+
+// Start server
+app.listen(env.PORT, () => {
+  console.log(`Server running on port ${env.PORT}`);
 });

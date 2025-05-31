@@ -1,3 +1,4 @@
+// schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
@@ -5,6 +6,14 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
 }
 
 model Job {
@@ -19,23 +28,30 @@ model Job {
   qualifications   String[]
   compensation     String?
   createdAt        DateTime      @default(now())
-  applications     Application[]
+  applications     Application[] 
 }
 
 model Application {
-  id            Int      @id @default(autoincrement())
-  jobId         Int
-  userName      String
-  email         String
-  phone         String?
-  academicQual  String[]
-  resumeUrl     String
-  origin        String
-  location      String
-  socialLinks   String[]
-  expectedPay   String?
-  dataAgreement Boolean
-  documentUrls  String[]
-  createdAt     DateTime @default(now())
-  job           Job      @relation(fields: [jobId], references: [id])
+  id                    Int      @id @default(autoincrement())
+  jobId                 Int
+  email                 String
+  phone                 String?
+  resumeUrl             String
+  expectedPay           String?
+  dataAgreement         Boolean
+  documentUrls          String[]
+  createdAt             DateTime @default(now())
+  token                 String   @unique
+  firstName             String
+  lastName              String
+  middleName            String?
+  phoneCountryCode      String?
+  residentialAddress    Json
+  additionalInformation String?
+  additionalLanguage    String?
+  availableHours        Int?
+  countryOfBirth        String?
+  highestEducationLevel String?
+  primarySpokenLanguage String?
+  job                   Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }
