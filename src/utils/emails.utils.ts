@@ -88,7 +88,7 @@ export async function sendDocumentUploadRequest(to: string, fullName: string, jo
           <a href="${uploadLink}" style="color: #4A90E2; text-decoration: none;">${uploadLink}</a>
         </p>
         <p style="font-size: 14px; color: #333333; line-height: 1.5;">
-          Kindly ensure all required documents are uploaded 72 hours of recieving this email. Should you encounter any issues, please contact our recruitment team at <a href="mailto:recruitment-team@koovly.com" style="color: #4A90E2; text-decoration: none;">recruitment-team@koovly.com</a>.
+          Kindly ensure all required documents are uploaded 72 hours of recieving this email. Should you encounter any issues, please contact our recruitment team at <a href="mailto:careers@koovly.com" style="color: #4A90E2; text-decoration: none;">careers@koovly.com</a>.
         </p>
         <p style="font-size: 14px; color: #333333; line-height: 1.5; margin-top: 20px;">
           Best regards,<br />
@@ -111,10 +111,10 @@ export async function sendDocumentAcknowledgment(to: string, fullName: string) {
           We are writing to confirm that we have successfully received the additional documents you submitted for your application with Koovly Careers.
         </p>
         <p style="font-size: 14px; color: #333333; line-height: 1.5;">
-          As the next step, we kindly request you to schedule a facial verification session. Please reply to this email with your preferred date and time for the verification, and our team will confirm your appointment.
+          As the next step, we kindly request you to schedule a facial verification session. Please reply to this email or send us an email at <a href="mailto:careers@koovly.com" style="color: #4A90E2; text-decoration: none;">careers@koovly.com</a> with your preferred date and time for the verification, and our team will confirm your appointment.
         </p>
         <p style="font-size: 14px; color: #333333; line-height: 1.5;">
-          Should you have any questions or require assistance, please do not hesitate to contact us at <a href="mailto:recruitment-team@koovly.com" style="color: #4A90E2; text-decoration: none;">recruitment-team@koovly.com</a>.
+          Should you have any questions or require assistance, please do not hesitate to contact us at <a href="mailto:careers@koovly.com" style="color: #4A90E2; text-decoration: none;">careers@koovly.com</a>.
         </p>
         <p style="font-size: 14px; color: #333333; line-height: 1.5; margin-top: 20px;">
           Best regards,<br />
