@@ -86,9 +86,9 @@ export async function createApplication(
 
   // Schedule follow-up email after 20 minutes
   setTimeout(async () => {
-    const frontendBaseUrl = env.FRONTEND_BASE_URL || 'http://localhost:8080';
+    const frontendBaseUrl = env.FRONTEND_BASE_URL;
     const uploadLink = `${frontendBaseUrl}/document-upload?appId=${application.id}&token=${token}`;
-    await sendDocumentUploadRequest(data.email, fullName, application.id, uploadLink);
+    await sendDocumentUploadRequest(data.email, fullName, job.title, uploadLink);
   }, 3000); // 20 minutes
 
   return application;

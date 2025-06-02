@@ -30,6 +30,7 @@ export async function createJob(data: {
   description: string;
   responsibilities: string[];
   qualifications: string[];
+  benefits?: string[];
   compensation?: string;
 }) {
   return prisma.job.create({
@@ -37,6 +38,7 @@ export async function createJob(data: {
       ...data,
       responsibilities: data.responsibilities || [],
       qualifications: data.qualifications || [],
+      benefits: data.benefits || [],
       compensation: data.compensation || null,
     },
   });
@@ -51,6 +53,7 @@ export async function updateJob(id: number, data: {
   description?: string;
   responsibilities?: string[];
   qualifications?: string[];
+  benefits?: string[];
   compensation?: string | null;
 }) {
   const job = await prisma.job.update({

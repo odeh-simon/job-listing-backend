@@ -14,6 +14,7 @@ const jobSchema = z.object({
     description: z.string().min(1),
     responsibilities: z.array(z.string()).optional(),
     qualifications: z.array(z.string()).optional(),
+    benefits: z.array(z.string()).optional(),
     compensation: z.string().optional(),
   }),
 });
@@ -28,6 +29,7 @@ const jobUpdateSchema = z.object({
     description: z.string().min(1).optional(),
     responsibilities: z.array(z.string()).optional(),
     qualifications: z.array(z.string()).optional(),
+    benefits: z.array(z.string()).optional(),
     compensation: z.string().optional().nullable(),
   }),
 });

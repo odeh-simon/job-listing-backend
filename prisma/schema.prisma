@@ -26,6 +26,7 @@ model Job {
   description      String
   responsibilities String[]
   qualifications   String[]
+  benefits         String[]
   compensation     String?
   createdAt        DateTime      @default(now())
   applications     Application[] 
