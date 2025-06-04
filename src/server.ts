@@ -7,7 +7,7 @@ import { errorHandler } from './middlewares/error.middleware';
 const app: Express = express();
 
 // Middleware
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174", "https://job-demo.onrender.com", "https://job-user-demo.onrender.com", "https://job-user-frontend-ten.vercel.app", "https://job-admin-frontend-iota.vercel.app"] }));
+app.use(cors({ origin: ["https://www.koovly.com", "koovly.com", "http://localhost:5173", "http://localhost:5174", "https://job-demo.onrender.com", "https://job-user-demo.onrender.com", "https://job-user-frontend-ten.vercel.app", "https://job-admin-frontend-iota.vercel.app"] }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
