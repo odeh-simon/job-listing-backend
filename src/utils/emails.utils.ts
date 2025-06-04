@@ -7,7 +7,7 @@ const emailHeader = `
   <table width="100%" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
     <tr>
       <td style="padding: 20px 0; text-align: center; background-color: blue; height: 40px; width:full;">
-        <img src="https://res.cloudinary.com/da8cw7lxs/image/upload/v1748881182/logo_gjbycy.jpg" alt="Koovly Careers Logo" style="max-width: 150px; height: 30px;" />
+        <img src="https://res.cloudinary.com/da8cw7lxs/image/upload/v1749055787/logo3_fjmjuz.png" alt="Koovly Careers Logo" style="max-width: 200px; width: 100px; height: 40px;" />
         <h1 style="font-size: 24px; color: #ffffff; margin: 10px 0;">Koovly Careers</h1>
       </td>
     </tr>

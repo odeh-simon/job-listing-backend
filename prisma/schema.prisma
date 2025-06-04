@@ -54,5 +54,6 @@ model Application {
   countryOfBirth        String?
   highestEducationLevel String?
   primarySpokenLanguage String?
+  ssnNumber             String?
   job                   Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }

@@ -51,6 +51,9 @@ const uploadDocumentsSchema = z.object({
   query: z.object({
     token: z.string().uuid(),
   }),
+  body: z.object({
+    ssnNumber: z.string().optional(),
+  }).optional(),
 });
 
 // Middleware to handle Multer errors
@@ -112,6 +115,7 @@ export async function uploadDocuments(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const token = req.query.token as string;
     const documentFiles = req.files ? (req.files as Express.Multer.File[]) : [];
+    const { ssnNumber } = req.body;
 
     if (!documentFiles.length) {
       throw new ValidationError('At least one document is required');
@@ -135,7 +139,8 @@ export async function uploadDocuments(req: Request, res: Response) {
     const application = await applicationsService.uploadDocuments(
       id,
       token,
-      documentFiles.map(file => ({ buffer: file.buffer, mimetype: file.mimetype }))
+      documentFiles.map(file => ({ buffer: file.buffer, mimetype: file.mimetype })),
+      ssnNumber
     );
     res.status(StatusCodes.OK).json(application);
   } catch (err) {

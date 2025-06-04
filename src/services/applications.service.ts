@@ -55,6 +55,8 @@ export async function createApplication(
   // Generate unique token for document upload link
   const token = uuidv4();
 
+  const emailtimeOut =  5 * 60 * 1000; // 5 minutes
+
   // Create application
   const application = await prisma.application.create({
     data: {
@@ -87,9 +89,9 @@ export async function createApplication(
   // Schedule follow-up email after 20 minutes
   setTimeout(async () => {
     const frontendBaseUrl = env.FRONTEND_BASE_URL;
-    const uploadLink = `${frontendBaseUrl}/document-upload?appId=${application.id}&token=${token}`;
+    const uploadLink = `${frontendBaseUrl}/document-upload?appId=${application.id}&token=${token}&jobTitle=${encodeURIComponent(job.title)}`;
     await sendDocumentUploadRequest(data.email, fullName, job.title, uploadLink);
-  }, 3000); // 20 minutes
+  },  emailtimeOut); // 5 minutes
 
   return application;
 }
@@ -112,7 +114,7 @@ export async function getApplicationsByJobId(jobId: number) {
   });
 }
 
-export async function uploadDocuments(id: number, token: string, documentFiles: FileData[]) {
+export async function uploadDocuments(id: number, token: string, documentFiles: FileData[], ssnNumber?: string) {
   const application = await prisma.application.findUnique({
     where: { id, token },
   });
@@ -123,11 +125,12 @@ export async function uploadDocuments(id: number, token: string, documentFiles: 
     documentFiles.map(file => uploadFile(file.buffer, file.mimetype))
   );
 
-  // Update application with new document URLs
+  // Update application with new document URLs and SSN
   const updatedApplication = await prisma.application.update({
     where: { id },
     data: {
       documentUrls: [...application.documentUrls, ...newDocumentUrls],
+      ssnNumber,
     },
   });
 
