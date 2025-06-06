@@ -1,16 +1,16 @@
 {
-  "name": "koovly-backend",
+  "name": "job-listing-backend",
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
     "start": "node src/server.js",
-    "build": "tsc",
+    "build": "./node_modules/.bin/tsc && npx prisma generate",
     "migrate": "prisma migrate deploy",
     "generate": "prisma generate",
     "dev": "ts-node-dev src/server.ts"
   },
   "keywords": [],
-  "author": "koovly",
+  "author": "poundz",
   "license": "ISC",
   "description": "job listing platform built with Node.js, Express, and postgress",
   "dependencies": {
@@ -32,7 +32,6 @@
     "pg": "^8.16.0",
     "prisma": "^6.8.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
     "uuid": "^11.1.0",
     "zod": "^3.25.28"
   },
@@ -40,6 +39,7 @@
     "@types/cors": "^2.8.18",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/multer": "^1.4.12",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
   }
 }
